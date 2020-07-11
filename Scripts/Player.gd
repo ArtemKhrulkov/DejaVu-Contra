@@ -4,6 +4,7 @@ const SPEED = 400  # How fast the player will move (pixels/sec).
 const UP = Vector2(0, -1);
 const GRAVITY = 20
 const JUMP_HEIGHT = -500
+export var id = 0
 
 var velocity = Vector2()
 
