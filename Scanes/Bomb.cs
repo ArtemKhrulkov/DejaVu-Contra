@@ -12,7 +12,7 @@ public class Bomb : RigidBody2D
 		animation.Scale = new Vector2(Radius / 5, Radius / 5);
 	}
 
-	private TileMap GetTileMap => (TileMap) GetParent().GetNode("TileMap"); 
+	private TileMap GetTileMap => (TileMap) GetParent().GetParent().GetNode("TileMap"); 
 
 	public override void _IntegrateForces(Physics2DDirectBodyState state)
 	{
@@ -40,6 +40,11 @@ public class Bomb : RigidBody2D
 
 	private IList<Vector2> GetTilesInRadius(TileMap tileMap, Vector2 centerPoint, int radius)
 	{
+		if (GetTileMap == null)
+		{
+			return new List<Vector2>();
+		}
+		
 		var tiles = new List<Vector2>();
 		
 		var startPoint = new Vector2(centerPoint.x - radius, centerPoint.y - radius);
