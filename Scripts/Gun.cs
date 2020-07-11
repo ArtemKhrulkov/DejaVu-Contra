@@ -23,18 +23,23 @@ public class Gun : Sprite
 
 	public override void _Process(float delta)
 	{
-		DoShot();
+
 	}
 
 	private PackedScene _bulletScene = (PackedScene)GD.Load("res://Components/Bullet.tscn");
 	
-	private void DoShot()
-	{
+	public void DoShot(bool isForward)
+	{		
+		var playerSize = 50;
+
 		if (LastShot == default || LastShot.AddSeconds(CoolDown) < DateTime.Now)
 		{
 			var bullet = _bulletScene.Instance();
+			
 			var bulletRigidBody = (RigidBody2D) bullet;
-			bulletRigidBody.ApplyImpulse(new Vector2(0, 0), new Vector2(XImpulse, -YImpulse));
+			var directOfXImpulse = isForward ? -1 : 1;
+			bulletRigidBody.Position = new Vector2(playerSize * directOfXImpulse, 0);
+			bulletRigidBody.ApplyImpulse(new Vector2(0, 0), new Vector2(XImpulse * directOfXImpulse, -YImpulse));
 
 			AddChild(bullet);
 			
