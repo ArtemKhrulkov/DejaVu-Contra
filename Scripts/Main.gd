@@ -4,8 +4,8 @@ onready var viewport1 = $VBoxContainer/ViewportContainer1/Viewport1
 onready var viewport2 = $VBoxContainer/ViewportContainer2/Viewport2
 onready var camera1 = $VBoxContainer/ViewportContainer1/Viewport1/Camera2D
 onready var camera2 = $VBoxContainer/ViewportContainer2/Viewport2/Camera2D
-onready var player1 = $VBoxContainer/ViewportContainer1/Viewport1/Node2D/Player1;
-onready var player2 = $VBoxContainer/ViewportContainer1/Viewport1/Node2D/Player2;
+onready var player1 = $VBoxContainer/ViewportContainer1/Viewport1/World/Player1;
+onready var player2 = $VBoxContainer/ViewportContainer1/Viewport1/World/Player2;
 
 
 # Declare member variables here. Examples:

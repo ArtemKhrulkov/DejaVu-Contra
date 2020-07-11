@@ -16,8 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Hakaton"
-run/main_scene="res://Scanes/Node2D.tscn"
+run/main_scene="res://Scanes/Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
+window/size/resizable=false
 
 [input]
 
