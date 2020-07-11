@@ -1,75 +1,62 @@
 using Godot;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Bomb : RigidBody2D
 {
-	[Signal]
-	public delegate void Hit();
-
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
-	// Called when the node enters the scene tree for the first time.
+	[Export] public int Radius { get; set; } = 10;
+	
 	public override void _Ready()
 	{
+		var animation = GetChild<Sprite>(0).GetChild<AnimatedSprite>(0);
+		animation.Scale = new Vector2(Radius / 5, Radius / 5);
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-	private void _on_RigidBody2D_body_entered(object body)
-	{
-		GD.Print("TEST1");
-
-		// Replace with function body.
-	}
-
-	private static IList<Vector2> contactPoses = new List<Vector2>();
-	private static IList<Vector2> worldPoses = new List<Vector2>();
-
+	private TileMap GetTileMap => (TileMap) GetParent().GetNode("TileMap"); 
 
 	public override void _IntegrateForces(Physics2DDirectBodyState state)
 	{
-		var tileMap = (TileMap) GetParent().GetNode("TileMap");
-		contactPoses.Clear();
-		worldPoses.Clear();
-		
 		for (int i = 0; i < state.GetContactCount(); i++)
 		{
-			var contactPos = state.GetContactLocalPosition(i);
-			contactPoses.Add(contactPos);
-			var worldPos = tileMap.WorldToMap(contactPos);
-			if (tileMap.GetCellv(worldPos) != TileMap.InvalidCell)
+			var contactLocalPosition = state.GetContactLocalPosition(i);
+			var tilesInRadius = GetTilesInRadius(GetTileMap, contactLocalPosition, Radius);
+			
+			if (tilesInRadius.Any())
+				RunBangAnimation();
+			
+			foreach (var cell in tilesInRadius)
 			{
-				worldPoses.Add(worldPos);
+				GetTileMap.SetCell((int)cell.x, (int)cell.y, -1);
 			}
 		}
-		
-		Update();
 	}
 
-	public override void _Draw()
+	private void RunBangAnimation()
 	{
-		var tileMap = (TileMap) GetParent().GetNode("TileMap");
+		var animation = GetChild<Sprite>(0).GetChild<AnimatedSprite>(0);
+		animation.Visible = true;
+		animation.Playing = true;
+	}
 
-		foreach (var contactPos in contactPoses)
+	private IList<Vector2> GetTilesInRadius(TileMap tileMap, Vector2 centerPoint, int radius)
+	{
+		var tiles = new List<Vector2>();
+		
+		var startPoint = new Vector2(centerPoint.x - radius, centerPoint.y - radius);
+		for (var x = 0; x < 2 * radius; x++)
 		{
-			GD.Print("Draw contactPos");
-
-			DrawCircle(contactPos, 100, Color.Color8(100, 0, 0));
+			for (var y = 0; y < 2 * radius; y++)
+			{
+				var worldPos = tileMap.WorldToMap(new Vector2(startPoint.x + x, startPoint.y + y));
+				var cell = tileMap.GetCellv(worldPos);
+				
+				// change to hash
+				if (cell != TileMap.InvalidCell && tiles.All(t => t != worldPos))
+					tiles.Add(worldPos);
+			}
 		}
 
-		foreach (var tilePos in worldPoses)
-		{
-			GD.Print("Draw worldPoses");
+		return tiles;
 
-			DrawRect(new Rect2(tilePos * tileMap.CellSize, tileMap.CellSize), Color.Color8(100, 0, 0, 1));
-		}
-
-		base._Draw();
 	}
 }
