@@ -1,14 +1,11 @@
 extends KinematicBody2D
 
 const SPEED = 400  # How fast the player will move (pixels/sec).
-var velocity = Vector2()
 const UP = Vector2(0, -1);
 const GRAVITY = 20
 const JUMP_HEIGHT = -500
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
+var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,15 +35,17 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.stop()
 	
-	if velocity.x != 0 and is_on_floor():
-		$AnimatedSprite.animation = "run"
-		$AnimatedSprite.flip_v = false
-		# See the note below about boolean assignment
-		$AnimatedSprite.flip_h = velocity.x < 0
-	elif velocity.y < 0:
-		$AnimatedSprite.animation = "jump"
-	else:
-		$AnimatedSprite.animation = "idle"
+    if velocity.length() >= 0:
+        $AnimatedSprite.play()
+    else:
+        $AnimatedSprite.stop()
+    
+    if velocity.x != 0 and is_on_floor():
+        $AnimatedSprite.animation = "run"
+    elif velocity.y < 0:
+        $AnimatedSprite.animation = "jump"
+    else:
+        $AnimatedSprite.animation = "idle"
 		
 	if Input.is_action_pressed("ui_fire"):
 		$Gun.DoShot($AnimatedSprite.flip_h)
