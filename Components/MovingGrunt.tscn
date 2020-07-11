@@ -118,3 +118,4 @@ animation = "shoot"
 position = Vector2( -48.3712, 10.9465 )
 scale = Vector2( 1.52402, 1.53166 )
 script = ExtResource( 3 )
+CoolDown = 5000

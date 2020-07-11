@@ -134,10 +134,10 @@ position = Vector2( 2993.98, -171.458 )
 ID = 1
 
 [node name="Grunt" parent="." instance=ExtResource( 2 )]
-position = Vector2( 682.781, -185.133 )
+position = Vector2( 778.643, -203.633 )
 
 [node name="MovingGrunt" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2084.2, -154.128 )
 
 [node name="MovingGrunt2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 885.48, -135.101 )
+position = Vector2( 4310.4, -139.858 )

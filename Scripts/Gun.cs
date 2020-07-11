@@ -4,7 +4,7 @@ using System;
 public class Gun : Sprite
 {
 	[Export]
-	public int CoolDown { get; set; } = 1;
+	public int CoolDown { get; set; } = 200; // ms
 	
 	[Export]
 	public int XImpulse { get; set; } = 500;
@@ -32,7 +32,7 @@ public class Gun : Sprite
 	{		
 		var playerSize = 50;
 
-		if (LastShot == default || LastShot.AddSeconds(CoolDown) < DateTime.Now)
+		if (LastShot == default || LastShot.AddMilliseconds(CoolDown) < DateTime.Now)
 		{
 			var bullet = _bulletScene.Instance();
 			
