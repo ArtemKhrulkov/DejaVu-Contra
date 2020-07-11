@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/enemy/grunt_idle.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Grunt.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Grunt/Gun.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/Gun.cs" type="Script" id=3]
+[ext_resource path="res://Sprites/enemy/grunt_shoot.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 26.071, 38.32 )
@@ -17,15 +18,30 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 26, 0, 26, 22 )
 
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 26, 22 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 26, 0, 26, 22 )
+
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 2.0
 } ]
 
-[node name="Grunt" type="RigidBody2D"]
+[node name="Grunt" type="KinematicBody2D"]
 position = Vector2( 0.418259, 0.209137 )
 collision_mask = 0
 script = ExtResource( 2 )
@@ -41,7 +57,7 @@ shape = SubResource( 1 )
 position = Vector2( 7, -7 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-animation = "idle"
+animation = "shoot"
 
-[node name="Gun" type="Sprite" parent="."]
+[node name="GruntGun" type="Sprite" parent="."]
 script = ExtResource( 3 )

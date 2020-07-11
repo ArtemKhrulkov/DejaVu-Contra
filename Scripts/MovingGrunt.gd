@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var Player = get_parent().get_node("Player")
 var vel = Vector2(0, 0)
+const GRAVITY = 20
+const SPEED = 100
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -12,19 +14,27 @@ var vel = Vector2(0, 0)
 func _ready():
     pass # Replace with function body.
 
+
 func _physics_process(_delta):
-    vel.y += 20
     $AnimatedSprite.play()
+    vel.y += GRAVITY
     if Player.position.x > position.x:
+        vel.x = SPEED
         $AnimatedSprite.flip_h = false
-        $GruntGun.DoShot(false)
-        $AnimatedSprite.play("shoot")
+        if vel.distance_to(Player.position) > 400:
+            print(vel.distance_to(Player.position))
+            $MovingGruntGun.DoShot(false)
+        $AnimatedSprite.play("walk")
     elif Player.position.x < position.x:
+        vel.x = -SPEED
         $AnimatedSprite.flip_h = true
-        $GruntGun.DoShot(true)
-        $AnimatedSprite.play("shoot")
-        
+        if vel.distance_to(Player.position) > 700:
+            print(vel.distance_to(Player.position))
+            $MovingGruntGun.DoShot(true)
+        $AnimatedSprite.play("walk")
+    
     vel = move_and_slide(vel, Vector2(0, -1))
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #    pass
