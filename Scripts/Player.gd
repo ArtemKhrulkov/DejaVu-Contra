@@ -17,20 +17,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	velocity.y += GRAVITY
-
-	if Input.is_action_pressed("movement_right_" + String(ID)) || Input.is_action_pressed("movement_left_" + String(ID)) && !IsPlayerOnBottom():
-		#print(CanMoveToRight())
-		print(CanMoveToLeft())
-	
-	
 	
 	if Input.is_action_pressed("movement_right_" + String(ID)):
 		if CanMoveToRight():
 			velocity.x = SPEED
+		else:
+			velocity.x = 0
 		$AnimatedSprite.flip_h = false
 	elif Input.is_action_pressed("movement_left_" + String(ID)):
 		if CanMoveToLeft():
 			velocity.x = -SPEED
+		else:
+			velocity.x = 0
 		$AnimatedSprite.flip_h = true
 	else:
 		velocity.x = 0
@@ -76,7 +74,7 @@ func AnotherPlayer():
 		return get_parent().get_node("Player1");
 	
 func ScreenSize():
-	return get_viewport_rect().size.x;
+	return 3000;
 	
 func IsPlayerOnBottom():
 	if ID == 1:
