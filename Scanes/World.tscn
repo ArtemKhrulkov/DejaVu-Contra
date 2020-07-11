@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Tiles/4colors.png" type="Texture" id=1]
 [ext_resource path="res://Components/Grunt.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprites/Background/blue.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=6]
+[ext_resource path="res://Components/MovingGrunt.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -134,3 +135,9 @@ ID = 1
 
 [node name="Grunt" parent="." instance=ExtResource( 2 )]
 position = Vector2( 682.781, -185.133 )
+
+[node name="MovingGrunt" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2084.2, -154.128 )
+
+[node name="MovingGrunt2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 885.48, -135.101 )

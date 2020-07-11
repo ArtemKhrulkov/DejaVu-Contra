@@ -35,7 +35,7 @@ script = ExtResource( 2 )
 [node name="World" parent="ViewportContainer2/Viewport2" instance=ExtResource( 1 )]
 position = Vector2( 0.000305176, -0.00106812 )
 ID = 2
-START_POSITION = 700
+START_POSITION = 500
 
 [node name="ViewportContainer1" type="ViewportContainer" parent="."]
 margin_top = 470.0
@@ -60,4 +60,4 @@ script = ExtResource( 2 )
 [node name="World" parent="ViewportContainer1/Viewport1" instance=ExtResource( 1 )]
 position = Vector2( 0.000305176, -0.00106812 )
 ID = 1
-START_POSITION = 1000
+START_POSITION = 2000
