@@ -19,6 +19,7 @@ animations = [ {
 radius = 17.0871
 
 [node name="Bullet" type="RigidBody2D"]
+gravity_scale = 5.0
 contacts_reported = 4
 contact_monitor = true
 script = ExtResource( 6 )

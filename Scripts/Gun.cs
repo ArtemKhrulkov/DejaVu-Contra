@@ -3,23 +3,23 @@ using System;
 
 public class Gun : Sprite
 {
-    [Export]
-    public int CoolDown { get; set; } = 1;
-    
-    [Export]
-    public int XImpulse { get; set; } = 500;
-    
-    [Export]
-    public int YImpulse { get; set; } = 100;
-    
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+	[Export]
+	public int CoolDown { get; set; } = 1;
+	
+	[Export]
+	public int XImpulse { get; set; } = 500;
+	
+	[Export]
+	public int YImpulse { get; set; } = 100;
+	
+	// Declare member variables here. Examples:
+	// private int a = 2;
+	// private string b = "text";
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
-    {
-    }
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
 
 	public override void _Process(float delta)
 	{
@@ -41,11 +41,11 @@ public class Gun : Sprite
 			bulletRigidBody.Position = new Vector2(playerSize * directOfXImpulse, 0);
 			bulletRigidBody.ApplyImpulse(new Vector2(0, 0), new Vector2(XImpulse * directOfXImpulse, -YImpulse));
 
-            AddChild(bullet);
-            
-            LastShot = DateTime.Now;
-        }
-    }
+			AddChild(bullet);
+			
+			LastShot = DateTime.Now;
+		}
+	}
 
-    private DateTime LastShot;
+	private DateTime LastShot;
 }
