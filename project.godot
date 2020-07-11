@@ -85,4 +85,5 @@ movement_fire_2={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.721569, 0.721569, 0.721569, 1 )
 environment/default_environment="res://default_env.tres"

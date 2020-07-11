@@ -11,8 +11,15 @@ public class Bomb : RigidBody2D
 		var animation = GetChild<Sprite>(0).GetChild<AnimatedSprite>(0);
 		animation.Scale = new Vector2(Radius / 5, Radius / 5);
 	}
+	
 
-	private TileMap GetTileMap => (TileMap) GetParent().GetParent().GetParent().GetNode("TileMap"); 
+	private TileMap GetTileMap => (TileMap) GetWorldBase.GetNode("TileMap"); 
+	private TileMap GetAnotherTileMap(int number) => (TileMap) GetCameraBase
+		.GetNode($"ViewportContainer{number}").GetNode($"Viewport{number}").GetNode("World")
+		.GetNode("TileMap");
+
+	private Node GetWorldBase => GetParent().GetParent().GetParent();
+	private Node GetCameraBase => GetWorldBase.GetParent().GetParent().GetParent();
 
 	public override void _IntegrateForces(Physics2DDirectBodyState state)
 	{
@@ -26,11 +33,20 @@ public class Bomb : RigidBody2D
 			
 			foreach (var cell in tilesInRadius)
 			{
+				GD.Print(GetCameraBase.Name);
 				GetTileMap.SetCell((int)cell.x, (int)cell.y, -1);
+				GetAnotherTileMap(GetAnotherNumber()).SetCell((int)cell.x, (int)cell.y, -1);;
 			}
 		}
 	}
 
+	private int GetAnotherNumber()
+	{
+		return GetWorldBase.GetParent().Name.Contains(1.ToString()) 
+			? 2 
+			: 1;
+	}
+	
 	private void RunBangAnimation()
 	{
 		var animation = GetChild<Sprite>(0).GetChild<AnimatedSprite>(0);

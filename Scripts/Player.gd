@@ -10,11 +10,11 @@ export var ID = 0
 
 var velocity = Vector2()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	ID = get_parent().ID
+	position = Vector2(get_parent().START_POSITION, position.y)
 	pass
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	velocity.y += GRAVITY
 	
@@ -69,12 +69,15 @@ func GetDistance():
 	
 func AnotherPlayer():
 	if ID == 1:
-		return get_parent().get_node("Player2");
+		return GetBaseNote().get_node("ViewportContainer2").get_node("Viewport2").get_node("World").get_node("Player");
 	else:
-		return get_parent().get_node("Player1");
-	
+		return GetBaseNote().get_node("ViewportContainer1").get_node("Viewport1").get_node("World").get_node("Player");
+
+func GetBaseNote():
+	return get_parent().get_parent().get_parent().get_parent();
+
 func ScreenSize():
-	return 3000;
+	return 2000;
 	
 func IsPlayerOnBottom():
 	if ID == 1:
