@@ -89,9 +89,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=15]
-radius = 32.2487
-height = 21.9688
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 31.3979, 45.1702 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 9.76325, 1.52396 )
