@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
 const SPEED = 400  # How fast the player will move (pixels/sec).
+var velocity = Vector2()
 const UP = Vector2(0, -1);
 const GRAVITY = 20
 const JUMP_HEIGHT = -500
-var velocity = Vector2()
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -31,7 +31,7 @@ func _physics_process(delta):
             
     velocity = move_and_slide(velocity, UP)
 
-    if velocity.length() > 0:
+    if velocity.length() >= 0:
         $AnimatedSprite.play()
     else:
         $AnimatedSprite.stop()
