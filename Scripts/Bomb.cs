@@ -30,7 +30,6 @@ public class Bomb : RigidBody2D
 			{
 				GetTileMap.SetCell((int) cell.x, (int) cell.y, -1);
 				GetAnotherTileMap(GetAnotherNumber()).SetCell((int) cell.x, (int) cell.y, -1);
-				;
 			}
 		}
 	}

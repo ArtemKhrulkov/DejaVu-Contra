@@ -10,7 +10,7 @@ export var ID = 0
 
 var velocity = Vector2()
 
-func _ready():
+func _ready():	
 	ID = get_parent().ID
 	position = Vector2(get_parent().START_POSITION, position.y)
 	pass
@@ -77,7 +77,7 @@ func GetBaseNote():
 	return get_parent().get_parent().get_parent().get_parent();
 
 func ScreenSize():
-	return 2000;
+	return 3000;
 	
 func IsPlayerOnBottom():
 	if ID == 1:
