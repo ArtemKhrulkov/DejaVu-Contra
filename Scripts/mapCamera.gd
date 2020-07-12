@@ -26,9 +26,10 @@ func _ready():
 	position = Vector2(distance/2, position.y);
 	zoom = Vector2(distance / get_parent().size.x, zoom.y);
 	GetLevelParameters().visible = true;
+	get_parent().get_node("World/Player").visible = false;
 	pass # Replace with function body.
 
-func _process(delta):
+func _process(_delta):
 	pseudoPlayer1.position = player1.position;
 	pseudoPlayer2.position = player2.position;
 	pass

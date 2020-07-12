@@ -12,6 +12,9 @@ public class Gun : Sprite
 	[Export]
 	public int YImpulse { get; set; } = 100;
 	
+	[Export]
+	public int Radius { get; set; } = 10;
+	
 	// Declare member variables here. Examples:
 	// private int a = 2;
 	// private string b = "text";
@@ -35,6 +38,7 @@ public class Gun : Sprite
 		if (LastShot == default || LastShot.AddMilliseconds(CoolDown) < DateTime.Now)
 		{
 			var bullet = _bulletScene.Instance();
+			((Bomb) bullet).Radius = Radius;
 			
 			var bulletRigidBody = (RigidBody2D) bullet;
 			var directOfXImpulse = isForward ? -1 : 1;

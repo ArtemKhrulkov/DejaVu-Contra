@@ -36,9 +36,13 @@ public class Bomb : RigidBody2D
 
 	private int GetAnotherNumber()
 	{
+		
+		GD.Load("res://Scripts/Grunt.gd").Call("");
+		
 		return GetWorldBase.GetParent().Name.Contains(1.ToString()) 
 			? 2 
 			: 1;
+		
 	}
 
 	private const int MaxDistance = 1000;
