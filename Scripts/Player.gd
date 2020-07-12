@@ -8,32 +8,43 @@ const JUMP_HEIGHT = -500
 # Player 1 on the bottom !!!
 export var ID = 0
 var is_dead = false
+export var current_id = 0
 
 var isWinner = false;
 var velocity = Vector2()
 
 func dead():
+	print(str(ID) + " dead")
+	GetUi().Hp = GetUi().Hp - 1; 
 	is_dead = true
 	velocity = Vector2(0, 0)
 	$AnimatedSprite.play("dead") 
 	$Timer.start()
+	
 
 func _ready():
 	ID = get_parent().ID
+	current_id = ID;
 	position = Vector2(get_parent().START_POSITION, position.y)
 	pass
 	
+func GetUi():
+	return 	GetBaseNote().get_node("CommonUi");
+	
 func _physics_process(_delta):
+	if position.y > 250 && !is_dead:
+		dead();
+	
 	if is_dead == false: 
 		velocity.y += GRAVITY
 		
-		if Input.is_action_pressed("movement_right_" + String(ID)):
+		if Input.is_action_pressed("movement_right_" + String(current_id)):
 			if CanMoveToRight():
 				velocity.x = SPEED
 			else:
 				velocity.x = 0
 			$AnimatedSprite.flip_h = false
-		elif Input.is_action_pressed("movement_left_" + String(ID)):
+		elif Input.is_action_pressed("movement_left_" + String(current_id)):
 			if CanMoveToLeft():
 				velocity.x = -SPEED
 			else:
@@ -43,7 +54,7 @@ func _physics_process(_delta):
 			velocity.x = 0
 		
 		if is_on_floor():
-			if Input.is_action_just_pressed("movement_up_" + String(ID)):
+			if Input.is_action_just_pressed("movement_up_" + String(current_id)):
 				velocity.y = JUMP_HEIGHT
 				
 		velocity = move_and_slide(velocity, UP)
@@ -112,4 +123,19 @@ func IsPlayerOnBottom():
 
 
 func _on_Timer_timeout():
+	print(str(ID) + " is not dead")
+	MoveToGroung()
+	AnotherPlayer()
+	is_dead = false;
+	if current_id == 1:
+		current_id = 2
+		AnotherPlayer().current_id = 1
+	elif current_id == 2:
+		current_id = 1
+		AnotherPlayer().current_id = 2
 	pass
+	
+onready var tileMap = get_parent().get_node("TileMap");
+	
+func MoveToGroung():
+	position = Vector2(position.x + 100, -250)
