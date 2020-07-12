@@ -11,3 +11,4 @@ data_*/
 #MacOS store ignores
 .DS_Store
 *.orig
+*.import
