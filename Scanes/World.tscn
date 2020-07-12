@@ -2,6 +2,7 @@
 
 [ext_resource path="res://Tiles/Pipoya.tres" type="TileSet" id=1]
 [ext_resource path="res://Components/Finish.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/Help.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/Background/blue.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=5]
@@ -96,3 +97,4 @@ position = Vector2( 2000, -200 )
 ItemType = 3
 
 [node name="Finish" parent="." instance=ExtResource( 2 )]
+[node name="Help" parent="." instance=ExtResource( 2 )]
