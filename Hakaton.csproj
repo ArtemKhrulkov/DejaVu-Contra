@@ -57,6 +57,7 @@
     <Compile Include="Scripts\Bomb.cs" />
     <Compile Include="Scripts\BangAnimation.cs" />
     <Compile Include="Scripts\Gun.cs" />
+    <Compile Include="Scripts\TimeLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts" />

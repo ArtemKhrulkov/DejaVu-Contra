@@ -9,6 +9,7 @@ const JUMP_HEIGHT = -500
 export var ID = 0
 var is_dead = false
 
+var isWinner = false;
 var velocity = Vector2()
 
 func dead():
@@ -63,18 +64,35 @@ func _physics_process(_delta):
 			$Gun.DoShot($AnimatedSprite.flip_h)
 
 func CanMoveToLeft():
-	if GetDistance() <= ScreenSize() && IsPlayerOnBottom():
-		return false;
-	return true
+	if !isWinner:
+		if GetDistance() <= ScreenSize() && IsPlayerOnBottom():
+			return false;
+		else:
+			return true;
+	else:
+		if finishPoint().position.x - position.x >= 500:
+			return false;
+		else:
+			return true
 		
-func CanMoveToRight():
-	if GetDistance() <= ScreenSize() && !IsPlayerOnBottom():
-		return false;
-	return true
+func CanMoveToRight():	
+	if !isWinner:
+		if GetDistance() <= ScreenSize() && !IsPlayerOnBottom() && !AnotherPlayer().isWinner:
+			return false;
+		else:
+			return true;
+	else:
+		if finishPoint().position.x - position.x <= -500:
+			return false;
+		else:
+			return true
 
 func GetDistance():
 	return abs(position.x - AnotherPlayer().position.x);
-	
+
+func finishPoint():
+	return get_parent().get_node("Finish")
+
 func AnotherPlayer():
 	if ID == 1:
 		return GetBaseNote().get_node("ViewportContainer2").get_node("Viewport2").get_node("World").get_node("Player");
