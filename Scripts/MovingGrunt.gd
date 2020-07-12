@@ -22,14 +22,12 @@ func _physics_process(_delta):
 		vel.x = SPEED
 		$AnimatedSprite.flip_h = false
 		if vel.distance_to(Player.position) > 400:
-			print(vel.distance_to(Player.position))
 			$MovingGruntGun.DoShot(false)
 		$AnimatedSprite.play("walk")
 	elif Player.position.x < position.x:
 		vel.x = -SPEED
 		$AnimatedSprite.flip_h = true
 		if vel.distance_to(Player.position) > 700:
-			print(vel.distance_to(Player.position))
 			$MovingGruntGun.DoShot(true)
 		$AnimatedSprite.play("walk")
 	
