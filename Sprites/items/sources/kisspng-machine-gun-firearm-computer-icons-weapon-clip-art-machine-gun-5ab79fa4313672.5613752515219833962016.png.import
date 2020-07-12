@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kisspng-machine-gun-firearm-computer-icons-weapon-clip-art-machine-gun-5ab79fa4313672.5613752515219833962016.png-3da6268995ba64e4046b750c1356024e.stex"
+path="res://.import/kisspng-machine-gun-firearm-computer-icons-weapon-clip-art-machine-gun-5ab79fa4313672.5613752515219833962016.png-729ba527a1cac6fd92024722dc0f1e66.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/items/kisspng-machine-gun-firearm-computer-icons-weapon-clip-art-machine-gun-5ab79fa4313672.5613752515219833962016.png"
-dest_files=[ "res://.import/kisspng-machine-gun-firearm-computer-icons-weapon-clip-art-machine-gun-5ab79fa4313672.5613752515219833962016.png-3da6268995ba64e4046b750c1356024e.stex" ]
+source_file="res://Sprites/items/sources/kisspng-machine-gun-firearm-computer-icons-weapon-clip-art-machine-gun-5ab79fa4313672.5613752515219833962016.png"
+dest_files=[ "res://.import/kisspng-machine-gun-firearm-computer-icons-weapon-clip-art-machine-gun-5ab79fa4313672.5613752515219833962016.png-729ba527a1cac6fd92024722dc0f1e66.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pulemet.png-d2cadb25bcbb98560863698ad9842f84.stex"
+path="res://.import/pulemet.png-49bd99ed5428276fb89f5b43dc35dba9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/items/pulemet.png"
-dest_files=[ "res://.import/pulemet.png-d2cadb25bcbb98560863698ad9842f84.stex" ]
+source_file="res://Sprites/items/sources/pulemet.png"
+dest_files=[ "res://.import/pulemet.png-49bd99ed5428276fb89f5b43dc35dba9.stex" ]
 
 [params]
 

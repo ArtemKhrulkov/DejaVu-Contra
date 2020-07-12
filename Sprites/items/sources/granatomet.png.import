@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/granatomet.png-8a251d4615abbd163d6e9ace6e572b21.stex"
+path="res://.import/granatomet.png-a1ad87edbb02740f44f4cd9210bc0450.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/items/granatomet.png"
-dest_files=[ "res://.import/granatomet.png-8a251d4615abbd163d6e9ace6e572b21.stex" ]
+source_file="res://Sprites/items/sources/granatomet.png"
+dest_files=[ "res://.import/granatomet.png-a1ad87edbb02740f44f4cd9210bc0450.stex" ]
 
 [params]
 
