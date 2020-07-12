@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/yesterday_dream/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/CommonUi.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+Hp = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1360.0
+margin_bottom = 666.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightContainer" type="HBoxContainer" parent="."]
+margin_left = 1100.0
+margin_right = 1400.0
+margin_bottom = 191.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightContainer"]
+margin_right = 237.0
+margin_bottom = 192.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightContainer/VBoxContainer"]
+margin_right = 237.0
+margin_bottom = 94.0
+
+[node name="HP" type="Label" parent="RightContainer/VBoxContainer/HBoxContainer"]
+margin_right = 90.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 1 )
+text = "HP:"
+
+[node name="HPValue" type="Label" parent="RightContainer/VBoxContainer/HBoxContainer"]
+margin_left = 94.0
+margin_right = 160.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 1 )
+text = "51"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RightContainer/VBoxContainer"]
+margin_top = 98.0
+margin_right = 237.0
+margin_bottom = 192.0
+
+[node name="Kills" type="Label" parent="RightContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 168.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 1 )
+text = "Kills:"
+
+[node name="KillsValue" type="Label" parent="RightContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 172.0
+margin_right = 237.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 1 )
+text = "10"

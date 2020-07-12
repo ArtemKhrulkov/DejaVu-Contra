@@ -7,5 +7,5 @@ func _ready():
 
 func _on_StartButton_button_down():
 	print("Start new level")
-	get_tree().change_scene_to(lvl1)
+	var _newScane = get_tree().change_scene_to(lvl1)
 	pass # Replace with function body.
