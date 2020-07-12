@@ -86,4 +86,4 @@ script = ExtResource( 2 )
 [node name="World" parent="ViewportContainer1/Viewport1" instance=ExtResource( 1 )]
 position = Vector2( 0.000305176, -0.00106812 )
 ID = 1
-START_POSITION = 2000
+START_POSITION = 4000

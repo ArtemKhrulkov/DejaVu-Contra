@@ -11,11 +11,11 @@ const SPEED = 100
 # var b = "text"
 
 func dead():
-    is_dead = true
-    vel = Vector2(0, 0)
-    $AnimatedSprite.play("dead")
-    $CollisionShape2D.set_deferred("disabled", true)
-    $Timer.start()
+	is_dead = true
+	vel = Vector2(0, 0)
+	$AnimatedSprite.play("dead")
+	$CollisionShape2D.set_deferred("disabled", true)
+	$Timer.start()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
