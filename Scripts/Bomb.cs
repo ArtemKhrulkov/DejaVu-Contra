@@ -34,7 +34,6 @@ public class Bomb : RigidBody2D
 			
 			foreach (var cell in tilesInRadius)
 			{
-				GD.Print(GetCameraBase.Name);
 				GetTileMap.SetCell((int)cell.x, (int)cell.y, -1);
 				GetAnotherTileMap(GetAnotherNumber()).SetCell((int)cell.x, (int)cell.y, -1);;
 			}
