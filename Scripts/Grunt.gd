@@ -22,7 +22,7 @@ func _physics_process(_delta):
 	if is_dead == false:
 		$AnimatedSprite.play()
 		
-		if Player:
+		if Player && !Player.is_dead && abs(Player.position.x - position.x) < 2000:
 			if Player.position.x > position.x:
 				$GruntGun.DoShot(false)
 				$AnimatedSprite.play("shoot")
