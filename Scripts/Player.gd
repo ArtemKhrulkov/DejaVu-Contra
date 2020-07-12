@@ -12,6 +12,7 @@ export var current_id = 0
 
 var isWinner = false;
 var velocity = Vector2()
+var inAbyss = false;
 
 func dead():
 	print(str(ID) + " dead")
@@ -33,6 +34,7 @@ func GetUi():
 	
 func _physics_process(_delta):
 	if position.y > 250 && !is_dead:
+		inAbyss = true;
 		dead();
 	
 	if is_dead == false: 
@@ -124,7 +126,9 @@ func IsPlayerOnBottom():
 
 func _on_Timer_timeout():
 	print(str(ID) + " is not dead")
-	MoveToGroung()
+	if inAbyss:
+		MoveToGroung()
+	$AnimatedSprite.play("alive") 
 	AnotherPlayer()
 	is_dead = false;
 	if current_id == 1:
