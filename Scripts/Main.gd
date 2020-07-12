@@ -9,7 +9,7 @@ onready var player2 = $VBoxContainer/ViewportContainer2/Viewport2/World/Player;
 
 
 func _ready():
-	camera1.target = player1;
-	camera2.target =  player2;
+    camera1.target = player1;
+    camera2.target =  player2;
 
-	 # Replace with function body.
+     # Replace with function body.
