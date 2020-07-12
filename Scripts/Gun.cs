@@ -28,7 +28,7 @@ public class Gun : Sprite
 	
 	public void DoShot(bool isForward)
 	{		
-		var playerSize = 50;
+		var playerSize = 0;
 
 		if (LastShot == default || LastShot.AddMilliseconds(CoolDown) < DateTime.Now)
 		{

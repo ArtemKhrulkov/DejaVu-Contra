@@ -73,7 +73,7 @@ func _physics_process(_delta):
 		else:
 			$AnimatedSprite.animation = "idle"
 			
-		if Input.is_action_pressed("movement_fire_" + String(ID)):
+		if Input.is_action_pressed("movement_fire_" + String(current_id)):
 			$Gun.DoShot($AnimatedSprite.flip_h)
 
 func CanMoveToLeft():
